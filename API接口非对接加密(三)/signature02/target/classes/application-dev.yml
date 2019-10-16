@@ -1,0 +1,60 @@
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true&serverTimezone=GMT%2B8
+      username: root
+      password: pass
+      initial-size: 5
+      max-active: 30
+      min-idle: 5
+      max-wait: 1234
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      validation-query: select 1
+      validation-query-timeout: 1
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 10000
+      min-evictable-idle-time-millis: 30001
+      async-close-connection-enable: true
+      filters: stat,wall,log4j2
+      #      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000;config.decrypt=true;config.decrypt.key=${public-key}
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: false
+        config:
+          enabled: true
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: admin
+        login-password: pass
+#  redis:
+#    database: 0
+#    host: 192.168.1.141
+#    port: 6379
+##    password: _Nianxiang!@2019&% # 连接超时时长（毫秒）
+#    timeout: 6000ms
+#    jedis:
+#      pool:
+#        max-active: 100  # 连接池最大连接数（使用负值表示没有限制）
+#        max-wait: -1ms      # 连接池最大阻塞等待时间（使用负值表示没有限制）
+#        max-idle: 5     # 连接池中的最大空闲连接
+#        min-idle: 2
+#  data:
+#    mongodb:
+#      uri: mongodb://wwkj:wwkj@47.110.140.36:27017/shared_parking
+
+#fdfs:
+#  tracker-list:
+#    - 47.96.14.151:22122
+#  network-timeout:  3000
+#  web-server-url: https://img.nianxiang.com/
+#
+#attachment:
+#  accessUrl: https://img.nianxiang.com/
+#  imgPath: F:/mnt/image/
